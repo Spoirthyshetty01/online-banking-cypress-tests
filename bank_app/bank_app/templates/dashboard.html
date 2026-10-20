@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Welcome, <span id="welcome-user">{{ user.username }}</span></h2>
+<p>Balance: <strong id="balance">{{ user.balance_cents | money }}</strong></p>
+
+<form method="post" action="{{ url_for('deposit') }}">
+  <input id="deposit-amount" name="amount" placeholder="Deposit amount">
+  <button id="deposit-btn" type="submit">Deposit</button>
+</form>
+
+<form method="post" action="{{ url_for('withdraw') }}">
+  <input id="withdraw-amount" name="amount" placeholder="Withdraw amount">
+  <button id="withdraw-btn" type="submit">Withdraw</button>
+</form>
+{% endblock %}

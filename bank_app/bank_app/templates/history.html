@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Transaction History</h2>
+{% if rows %}
+<table id="txn-table">
+  <thead><tr><th>Type</th><th>Amount</th><th>Balance after</th><th>Date</th></tr></thead>
+  <tbody>
+  {% for r in rows %}
+    <tr class="txn-row"><td class="txn-type">{{ r.type }}</td>
+        <td class="txn-amount">{{ r.amount_cents | money }}</td>
+        <td>{{ r.balance_after_cents | money }}</td><td>{{ r.created_at }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p id="no-txns">No transactions yet.</p>
+{% endif %}
+{% endblock %}
